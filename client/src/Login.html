@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../dist/output.css" />
+    <style>
+      .main-container {
+        height: 100vh;
+      }
+      input:focus-visible {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="flex justify-center items-center main-container bg-gradient-to-b from-yellow-500 via-red-500 to-pink-500"
+    >
+      <div class="w-1/2 shadow-lg p-5 rounded bg-white">
+        <p class="font-bold text-2xl text-center mt-3 mb-8">Login</p>
+        <div class="mb-3">
+          <label>Email</label>
+          <br />
+          <input
+            id="emailL"
+            type="email"
+            placeholder="Type your email"
+            class="border-b-2 pt-3 pb-3 mb-3 w-full"
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <br />
+          <input
+            id="passwordL"
+            type="password"
+            placeholder="Type your password"
+            class="border-b-2 pt-3 pb-3 mb-3 w-full"
+          />
+        </div>
+        <button
+          onclick="Login()"
+          class="block bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 text-white pt-3 pb-3 pl-6 pr-6 rounded w-full mt-5"
+        >
+          LOGIN
+        </button>
+        <a href="Register.html" class="mt-6 mb-3 text-center block"
+          >Don't have an account?</a
+        >
+      </div>
+    </div>
+
+    <script>
+      const URL = "http://localhost:3000/";
+      const Login = async () => {
+        const email = document.getElementById("emailL").value;
+        const password = document.getElementById("passwordL").value;
+        const data = {
+          email,
+          password,
+        };
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(data),
+        };
+        const response = await fetch(URL + "login", options);
+        const status = await response.status;
+        if (status === 201) {
+          window.location.assign("Resume.html");
+        }
+      };
+    </script>
+  </body>
+</html>
