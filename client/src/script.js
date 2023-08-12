@@ -60,12 +60,3 @@ const gobackbutton = () => {
 const printCV = () => {
   window.print();
 };
-
-const catchRainbow = async () => {
-  const response = await fetch("http://localhost:3000/auth");
-  const text = await response.text();
-  console.log(text);
-};
-catchRainbow().catch((error) => {
-  console.log(error);
-});

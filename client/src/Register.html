@@ -98,9 +98,8 @@
         const response = await fetch(URL + "register", options);
         const status = await response.status;
         if (status === 201) {
-          localStorage.setItem("auth", 1);
           console.log("User successfully created ,redirecting...");
-          window.location.assign("Resume.html");
+          window.location.replace("Resume.html");
         }
       };
     </script>

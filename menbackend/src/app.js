@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
+const auth = require("./middleware/auth");
 
 require("./db/conn");
 
@@ -24,9 +25,24 @@ app.get("/", (req, res) => {
   res.send("hello from server");
 });
 
-// app.get("/auth", (req, res) => {
-//   console.log(`cookie stored in browser is ${req.cookies.jwt}`);
-// });
+app.get("/secret", auth, (req, res) => {
+  // console.log(`cookie stored in browser is ${req.cookies.jwt}`);
+  res.status(200).send();
+});
+
+app.get("/logout", auth, async (req, res) => {
+  try {
+    req.user.tokens = req.user.tokens.filter((currElement) => {
+      return currElement.token !== req.token;
+    });
+    res.clearCookie("jwt");
+    console.log("Logout Successfully");
+    await req.user.save();
+    res.status(400).send("logout");
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 app.post("/register", async (req, res) => {
   try {
