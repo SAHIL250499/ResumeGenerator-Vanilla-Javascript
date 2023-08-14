@@ -5,123 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../dist/output.css" />
+    <style>
+      /* Hide the default spinners in number input */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0; /* Optionally, remove default margin */
+      }
+      input[type="number"] {
+        -moz-appearance: textfield; /* Firefox */
+      }
+
+      [contenteditable] {
+        outline: 0px solid transparent;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div>
-      <a href="http://localhost:3000/logout" onclick="logout()">Logout</a>
-    </div>
-    <div class="section1" id="section1">
-      <h1 class="text-center mt-2">Resume Generator</h1>
-      <div class="row flex">
-        <div class="w-6/12 m-4 p-4">
-          <h3 class="text-4xl text-center">Personal Information</h3>
-          <div class="form-group mt-2">
-            <label for="nameField">Your Name</label>
-            <input
-              id="nameField"
-              type="text"
-              class="shadow border w-full rounded"
-            />
-          </div>
-          <div class="form-group mt-2">
-            <label for="contactField">Your Contact</label>
-            <input
-              id="contactField"
-              type="text"
-              class="shadow border w-full rounded"
-            />
-          </div>
-          <div class="form-group mt-2">
-            <label for="addressField">Your Address</label>
-            <textarea
-              id="addressField"
-              class="shadow border w-full rounded"
-            ></textarea>
-          </div>
-
-          <p class="mt-3">Important Links</p>
-          <div class="form-group mt-2">
-            <label for="linkField">LinkedIn</label>
-            <input
-              id="linkField"
-              type="text"
-              class="shadow border w-full rounded"
-            />
-          </div>
-          <div class="form-group mt-2">
-            <label for="gitField">Github</label>
-            <input
-              id="gitField"
-              type="text"
-              class="shadow border w-full rounded"
-            />
-          </div>
-        </div>
-        <div class="col2 w-6/12 m-4 p-4">
-          <h3 class="text-4xl text-center">Professional Information</h3>
-          <div class="form-group mt-2">
-            <label for="">Objective</label>
-            <textarea rows="5" class="shadow border w-full rounded"></textarea>
-          </div>
-          <div class="form-group mt-2" id="we">
-            <label for="">Work Experience</label>
-            <textarea
-              rows="3"
-              class="weField shadow border w-full rounded"
-            ></textarea>
-            <div id="weAddButton" class="container text-center mt-2">
-              <button
-                onclick="addNewWEField()"
-                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-              >
-                Add
-              </button>
-            </div>
-          </div>
-          <div class="form-group mt-2" id="aq">
-            <label for="">Academic Qualification</label>
-            <textarea
-              rows="3"
-              class="aqField shadow border w-full rounded"
-            ></textarea>
-            <div id="AQAddButton" class="container text-center mt-2">
-              <button
-                onclick="addNewAQField()"
-                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-              >
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!----------------------------------------------->
+    <!----------------------------------------------->
+    <!----------------------------------------------->
+    <!----------------------------------------------->
+    <!--New Edited Section 1-->
+    <div class="">
       <div class="text-center mt-3">
-        <button
-          onclick="generateCV()"
+        <a
+          href="http://localhost:3000/logout"
+          onclick="logout()"
           class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
         >
-          Generate CV
-        </button>
+          Logout
+        </a>
       </div>
-    </div>
-    <!--SECTION2-->
-    <!--Template-->
-    <div class="section2 hidden" id="section2">
-      <div
-        class="bg-[#313b47] h-[2000px] flex items-center"
-        id="resume-template"
-      >
-        <div class="template container bg-white mx-auto h-[1681px]">
+      <div class="bg-[#313b47] h-[2000px] flex items-center">
+        <div class="Edittemplate container bg-white m-auto min-h-[1281px]">
           <!--Top section of container-->
           <div class="container h-1/5 px-[40px] pt-14 flex">
-            <div class="name_pos_desc w-6/12">
-              <h3 id="nameT" class="text-[46px] font-semibold text-[#313c4e]">
+            <div class="name_pos_desc w-6/12 top-0">
+              <div
+                contenteditable="true"
+                id="name"
+                class="text-[46px] text-[#313c4e]"
+              >
                 SAHIL PATIL
-              </h3>
-              <h3 class="text-[24px] text-[#449399] mt-2">Systems Engineer</h3>
-              <h3 class="text-[18px] text-black mt-2">
+              </div>
+              <div contenteditable="true" class="text-[24px] text-[#449399]">
+                WEB DEVELOPER
+              </div>
+              <div
+                contenteditable="true"
+                id="Description"
+                class="text-[18px] text-black"
+              >
                 Software Developer who is passionate about Web Development
-              </h3>
+              </div>
             </div>
             <!--social links-->
             <div class="social-links w-6/12">
@@ -165,168 +108,373 @@
               </ul>
             </div>
           </div>
-          <hr class="h-1 w-full dark:bg-[#242b33]" />
+          <hr id="horizontalline" class="mt-12 h-1 w-full dark:bg-[#242b33]" />
 
           <!--Bottom section of container-->
-          <div class="container h-4/5 row px-[40px] pt-4 flex">
+          <div class="container h-4/5 row px-[40px] pt-4 flex justify-between">
             <!--first col-->
-            <div class="col1 w-6/12">
+            <div id="_col1" class="cols w-[45%] space-y-12">
               <!--Work Experience-->
-              <div class="Work Experience">
+              <section
+                id="WorkExperience"
+                draggable="true"
+                class="Work Experience draggabledivs"
+              >
                 <h1 class="text-[28px] font-bold text-black mb-2">
                   WORK EXPERIENCE
                 </h1>
-                <ul id="weT" class="Work Experience space-y-1">
+
+                <ul id="_workExperience" class="WorkExperience space-y-4">
                   <li>
-                    <h3 class="text-[24px] font-bold text-black">
-                      Web Developer
+                    <h3
+                      contenteditable="true"
+                      class="text-[24px] font-bold text-black"
+                    >
+                      Job Title
                     </h3>
                   </li>
                   <li>
-                    <h3 class="text-[24px] text-black">
-                      Tata Consultancy Services
+                    <h3
+                      contenteditable="true"
+                      class="w-10/12 text-[24px] text-black"
+                    >
+                      Company Name
                     </h3>
                   </li>
                   <li>
-                    <h3 class="text-[16px] text-[#449399]">
-                      03<span>/</span>2021<span>-</span>02<span>/</span>2022
-                    </h3>
+                    <div class="text-[16px] text-[#449399]">
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,2)"
+                        placeholder="mm"
+                      /><span>/</span>
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,4)"
+                        maxlength="4"
+                        placeholder="yyyy"
+                      />
+                      <span>-</span>
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,2)"
+                        maxlength="2"
+                        placeholder="mm"
+                      />
+                      <span>/</span>
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,4)"
+                        maxlength="4"
+                        placeholder="yyyy"
+                      />
+                    </div>
                   </li>
+
                   <li>
                     <div class="Achievements/Tasks">
                       <h3 class="text-[16px] text-[#449399]">
                         Achievements/Tasks
                       </h3>
-
-                      <ul class="list-disc list-inside marker:text-[#449399]">
+                      <ul
+                        contenteditable="true"
+                        class="TaskList list-disc list-inside marker:text-[#449399] space-y-2"
+                      >
                         <li>
-                          Developing web pages using Azure APIM Developer
-                          Portal.
+                          <span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                          </span>
+                        </li>
+                        <li>
+                          <span>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                          </span>
                         </li>
                       </ul>
                     </div>
                   </li>
                 </ul>
-              </div>
+                <div
+                  id="weAddButton"
+                  class="hideButton container text-center mt-2 hidden"
+                >
+                  <button
+                    onclick="addWEFieldEditResume()"
+                    class="text-white bg-green-500 rounded-full p-2"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
 
               <!--Education-->
 
-              <div class="Education">
-                <h1
-                  for="Education"
-                  class="text-[28px] font-bold text-black pt-8"
-                >
+              <section draggable="true" class="draggabledivs Education">
+                <h1 for="Education" class="text-[28px] font-bold text-black">
                   EDUCATION
                 </h1>
-                <ul class="space-y-1">
+                <ul id="_education" class="space-y-4">
                   <li>
-                    <h1 class="text-[24px] text-black font-bold">
-                      10th(S.S.C)
+                    <h1
+                      contenteditable="true"
+                      class="text-[24px] text-black font-bold"
+                    >
+                      COURSE NAME
                     </h1>
                   </li>
                   <li>
-                    <h1 class="text-[24px] text-black">K.M.P.D. High School</h1>
-                    <h3 class="text-[16px] text-[#449399]">
-                      03<span>/</span>2021<span>-</span>02<span>/</span>2022
-                    </h3>
+                    <h1 contenteditable="true" class="text-[24px] text-black">
+                      School Name
+                    </h1>
+                  </li>
+                  <li>
+                    <div class="text-[16px] text-[#449399]">
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,2)"
+                        placeholder="mm"
+                      /><span>/</span>
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,4)"
+                        maxlength="4"
+                        placeholder="yyyy"
+                      />
+                      <span>-</span>
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,2)"
+                        maxlength="2"
+                        placeholder="mm"
+                      />
+                      <span>/</span>
+                      <input
+                        class="w-10 text-center"
+                        type="number"
+                        oninput="this.value=this.value.slice(0,4)"
+                        maxlength="4"
+                        placeholder="yyyy"
+                      />
+                    </div>
                   </li>
                 </ul>
-              </div>
+                <div
+                  id="eqAddButton"
+                  class="hideButton container text-center mt-2 hidden"
+                >
+                  <button
+                    onclick="addEQFieldEditResume()"
+                    class="text-white bg-green-500 rounded-full p-2"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
             </div>
             <!--second col-->
-            <div class="col2 w-6/12">
+            <div id="_col2" class="cols w-[45%] space-y-12">
               <!--Skills-->
-              <div class="Skills">
-                <h1 for="Skills" class="text-[28px] font-bold text-black mb-2">
+              <section draggable="true" class="draggabledivs Skills">
+                <h1 for="Skills" class="text-[28px] font-bold text-black pb-2">
                   SKILLS
                 </h1>
-                <ul class="space-y-1">
-                  <li>
-                    <h1 class="text-[18px] text-black">React</h1>
-                  </li>
-                </ul>
-              </div>
+                <div class="skillsList">
+                  <button
+                    contenteditable="true"
+                    class="text-white bg-[#989da6] rounded-lg px-5 py-2.5 mr-2 mb-2 cursor-text"
+                  >
+                    <span class="text-[18px] font-semibold">Skill</span>
+                  </button>
+                  <button
+                    onclick="addSkill()"
+                    class="hideButton text-white bg-green-500 rounded-full p-2 hidden"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
 
               <!--personal Projects-->
-              <div class="Personal Projects">
+              <section draggable="true" class="draggabledivs Personal Projects">
                 <h1
                   for="personal projects"
-                  class="text-[28px] font-bold text-black mb-2 pt-20"
+                  class="text-[28px] font-bold text-black pb-2"
                 >
                   PERSONAL PROJECTS
                 </h1>
-                <ul class="Work Experience space-y-1">
+                <ul id="_personalProjects" class="Work Experience space-y-2">
                   <li>
-                    <h1 class="text-[20px] text-black">ChatCodex-OpenAI</h1>
+                    <h1 contenteditable="true" class="text-[20px] text-black">
+                      Project Name
+                    </h1>
                   </li>
                   <li>
                     <!--list of projects-->
                     <div class="list of projects">
-                      <ul class="list-disc list-inside marker:text-[#449399]">
+                      <ul
+                        contenteditable="true"
+                        class="TaskList list-disc list-inside marker:text-[#449399]"
+                      >
                         <li>
-                          Developing web pages using Azure APIM Developer
-                          Portal.
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua.
                         </li>
                       </ul>
                     </div>
                   </li>
                 </ul>
-              </div>
+                <div
+                  id="ppAddButton"
+                  class="hideButton container text-center mt-2 hidden"
+                >
+                  <button
+                    onclick="addPPFieldEditResume()"
+                    class="text-white bg-green-500 rounded-full p-2"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
               <!--achievements-->
-              <div class="achievements">
+              <section draggable="true" class="draggabledivs achievements">
                 <h1
                   for="personal projects"
-                  class="text-[28px] font-bold text-black mb-2 pt-20"
+                  class="text-[28px] font-bold text-black pb-2"
                 >
                   ACHIEVEMENTS
                 </h1>
                 <!--List of Achievements-->
-                <ul
-                  class="achievements list-disc list-inside marker:text-[#449399] space-y-1"
+                <div class="list of achievements">
+                  <ul
+                    id="_achievements"
+                    contenteditable="true"
+                    class="TaskList list-disc list-inside marker:text-[#449399] space-y-1"
+                  >
+                    <li>
+                      <h1 class="text-[20px] text-black inline">Achievement</h1>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  id="achievementsAddButton"
+                  class="hideButton container text-center mt-2 hidden"
                 >
-                  <li>
-                    <h1 class="text-[20px] text-black inline">
-                      ChatCodex-OpenAI
-                    </h1>
-                  </li>
-                </ul>
-              </div>
+                  <button
+                    onclick="addAchieveFieldEditResume()"
+                    class="text-white bg-green-500 rounded-full p-2"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
 
               <!--Languages-->
-              <div class="languages">
+              <section draggable="true" class="draggabledivs languages">
                 <h1
                   for="personal projects"
-                  class="text-[28px] font-bold text-black mb-2 pt-20"
+                  class="text-[28px] font-bold text-black pb-2"
                 >
                   LANGUAGES
                 </h1>
-                <ul class="space-y-1">
-                  <li>
-                    <h1 class="text-[18px] text-black">Language</h1>
-                  </li>
-                </ul>
-              </div>
+                <div class="languageList">
+                  <button
+                    contenteditable="true"
+                    class="text-black border-2 border-[#989da6] rounded-lg px-5 py-2.5 mr-2 mb-2 cursor-text"
+                  >
+                    <span class="text-[18px] font-semibold">Language</span>
+                  </button>
+                  <button
+                    onclick="addLanguages()"
+                    class="hideButton text-white bg-green-500 rounded-full p-2 hidden"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
               <!--INTERESTS-->
-              <div class="interests">
+              <section draggable="true" class="draggabledivs interests">
                 <h1
                   for="personal projects"
-                  class="text-[28px] font-bold text-black mb-2 pt-20"
+                  class="text-[28px] font-bold text-black pb-2"
                 >
                   INTERESTS
                 </h1>
-                <ul class="space-y-1">
-                  <li>
-                    <h1 class="text-[18px] text-black">
-                      Hiking and Travelling new places
-                    </h1>
-                  </li>
-                </ul>
-              </div>
+                <div class="interestList">
+                  <button
+                    contenteditable="true"
+                    class="text-black border-2 border-[#989da6] rounded-lg px-5 py-2.5 mr-2 mb-2 cursor-text"
+                  >
+                    <span class="text-[18px] font-semibold"
+                      >Hiking and Travelling new places</span
+                    >
+                  </button>
+                  <button
+                    onclick="addInterests()"
+                    class="hideButton text-white bg-green-500 rounded-full p-2 hidden"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </section>
             </div>
-          </div>
-          <!--button go back-->
-          <div class="text-center">
-            <button onclick="gobackbutton()" class="text-white">Go back</button>
           </div>
         </div>
       </div>

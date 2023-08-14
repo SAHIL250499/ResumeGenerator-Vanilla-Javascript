@@ -1,6 +1,6 @@
 const Authentication = async () => {
   try {
-    document.querySelector("body").style.display = "none";
+    document.querySelector("body").style.display = "block";
     const response = await fetch("http://localhost:3000/secret", {
       credentials: "include",
     });
